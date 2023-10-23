@@ -1,0 +1,36 @@
+
+if n < 2:
+    premiers = []
+else:
+    premiers = [2, 3]
+
+for i in range(5, n + 1, 6):
+    if i <= 1:
+        continue
+    elif i <= 3:
+        premiers.append(i)
+    elif i % 2 == 0 or i % 3 == 0:
+        continue
+    j = 5
+    while j * j <= i:
+        if i % j == 0 or i % (j + 2) == 0:
+            continue
+        j += 6
+    premiers.append(i)
+
+    if i + 2 <= n:
+        if i + 2 <= 1:
+            continue
+        elif i + 2 <= 3:
+            premiers.append(i + 2)
+        elif (i + 2) % 2 == 0 or (i + 2) % 3 == 0:
+            continue
+        k = 5
+        while k * k <= i + 2:
+            if (i + 2) % k == 0 or (i + 2) % (k + 2) == 0:
+                continue
+            k += 6
+
+        premiers.append(i + 2)
+
+print(f"Les nombres premiers inférieurs à "n" sont ,":,premiers")
